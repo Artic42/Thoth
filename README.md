@@ -36,7 +36,7 @@ A small program that turn a simple mark up system into a tex file and a PDF. Mea
 
 \- first lines separator in table
 
-#Code estrcuture
+# Code estrcuture
 
 - Decoder Module
 - Output Module
