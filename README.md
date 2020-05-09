@@ -17,16 +17,23 @@ A small program that turn a simple mark up system into a tex file and a PDF. Mea
 
 ## Special characthers
 \# Section
+
 \## Subsection
+
 \### Subsubsection
 
+
 \- Non enumerated list
+
 \* Enumerated list
+
 \_ Start/finish italic
+
 \__ Start/finish bold
 
 
 \| new column on a table
+
 \- first lines separator in table
 
 #Code estrcuture
