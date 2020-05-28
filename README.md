@@ -40,6 +40,7 @@ A small program that turn a simple mark up system into a tex file and a PDF. Mea
 
 - Decoder Module
 - Output Module
+- Auxiliary functions module
 
 ## Decoder Module
 
@@ -60,14 +61,14 @@ Number | Type
 #### List Mode
 Number | Type
 -------|-------
-11 | New non-enumerated list
-12 | New item non-enumerated list
-13 | Finish non-enumerated list
-14 | New enumerated list
-15 | New item enumerated list
-16 | Finish enumerated list
-17 | This line inner
-18 | This line outer
+110 | New non-enumerated list
+120 | New item non-enumerated list
+13X | Finish non-enumerated list
+14X | Start and finish non-enumerated list
+150 | New enumerated list
+160 | New item enumerated list
+17X | Finish enumerated list
+18X | Start and finish enumerated list
 
 #### Table Mode
 Number | Type
