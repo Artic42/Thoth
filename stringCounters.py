@@ -10,3 +10,8 @@ def CountFirstCharacters (Line, Character):
 			n = n + 1
 		else:
 			return n
+
+# Remove all the Character characters from the line
+def RemoveFirstCharacters (Line, Character)
+	n = CountFirstcharacters (Line, Character)
+	return Line[n:]

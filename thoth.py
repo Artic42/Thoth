@@ -34,18 +34,5 @@ def CreateEnum (Linea):
 def CreateText (Linea):
 	return 0
 
-def DeterminateLineType(Letter, Line):
-	if Letter == '#':
-		CreateSection(Line)
-	elif Letter == '+':
-		CreateSubsection(Line)
-	elif Letter == '=':
-		CreateSubsubsection(Line)
-	elif Letter == '-':
-		if ListStarted == 1:
-			AddList(Line)
-		else:
-			CreateList(Line)
-			ListStarted = 1
 if __name__ == "__main__":
 	main(sys.argv[1])

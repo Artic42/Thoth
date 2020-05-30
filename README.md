@@ -13,7 +13,7 @@ A small program that turn a simple mark up system into a tex file and a PDF. Mea
 
 # Default mode
 ## Code 
-!default
+!Notes
 
 ## Special characthers
 \# Section
