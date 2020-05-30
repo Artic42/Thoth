@@ -1,29 +1,22 @@
 import stringCounters.py as aux
 
 def decoder (prvLine, Line, nxtLine):
-	if Line[0] == '#':
+	prvFC = FirstCharacter (prvLine)
+	FC = FirstCharacter (Line)
+	nxtFC = FirstCharacter (nxtLine)
+
+	if FC == '#':
 		return title (Line)
 
-def isFirsLineList (prvFisrtCharacter, FirstCharacter):
-	pass
+	if FC == '*' or FC == '-':
+		list (prvLine, Line, nxtLine, isEnumerated(FC), isFirst = isFirsLineList(FC, nxtFC), isLast = isLastLineList(prvFC, FC) 
 
-def isLastLineList (prvFisrtCharacter, FirstCharacter):
-	pass
-
-def is
-	enumLine = aux.RemoveFirstCharacters (Line, '	')[0] == '*'
-	enumPrvLine = aux.RemoveFirstCharacters (prvLine, '	')[0] == '*'
-	enumNxtLine = aux.RemoveFirstCharacters (nxtLine, '	')[0] == '*'
-	NenumLine = aux.RemoveFirstCharacters (Line, '	')[0] == '-'
-	NenumPrvLine = aux.RemoveFirstCharacters (prvLine, '	')[0] == '-'
-	NenumNxtLine = aux.RemoveFirstCharacters (nxtLine, '	')[0] == '-'
-	
+# Calculate code in case of a title of a section
 def title (Line):
 	return aux.CountFirstCharacters (Line, '#')
 
 #  Calculate code in case of a list been detected
-def list (prvLine, Line, nxtLine, enumerated, isFirst=False, isLast=False):
-
+def listLastStep (prvLine, Line, nxtLine, enumerated, isFirst=False, isLast=False):
 	prvTabs_number = aux.CountFirstCharacters (Line, '	')
 	Tabs_number = aux.CountFirsCharacters (Line, '	')
 	nxtTabs_number = aux.CountFirstCharacters (Line, '	')
@@ -60,6 +53,26 @@ def list (prvLine, Line, nxtLine, enumerated, isFirst=False, isLast=False):
 	if !prvSmaller and nxtSmaller and !enumerated:
 		return 170 + X
 
+# Return first non tab character of a line
+def FirstCharacter (Line):
+	return aux.RemoveFirstCharacters (Line, '	')[0]
+
+def isFirsLineList (prvFirstCharacter, FirstCharacter):
+	prvLineList = prvFirstCharacter == '*' or prvFirstCharacter == '-'
+	LineList = FirstCharacter == '*' or FirstCharacter == '-'
+	SameTypeList = FirstCharacter == prvFirstCharacter
+	return !prvLineList and LineList or !SameTypeList
+
+def isLastLineList (FirstCharacter, nxtFirstCharacter):
+	nxtLineList = nxtFirstCharacter == '*' or nxtFirstCharacter == '-'
+	LineList = FirstCharacter == '*' or FirstCharacter == '-'
+	SameTypeList = FirstCharacter == nxtFirstCharacter
+	return !nxtLineList and LineList or !SameTypeList
+
+def isEnumerated (FirstCharacter):
+	return FirstCharacter == '*'
+
+# Calculate codes in case of a table
 def table (prvLine, Line, nxtLine):
 	pass
 
