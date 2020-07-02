@@ -1,4 +1,4 @@
-import stringCounters.py as aux
+import stringCounters as aux
 
 def decoder (prvLine, Line, nxtLine):
 	prvFC = FirstCharacter (prvLine)
@@ -9,7 +9,12 @@ def decoder (prvLine, Line, nxtLine):
 		return title (Line)
 
 	if FC == '*' or FC == '-':
-		list (prvLine, Line, nxtLine, isEnumerated(FC), isFirst = isFirsLineList(FC, nxtFC), isLast = isLastLineList(prvFC, FC) 
+		return list (prvLine, 
+					Line,
+					nxtLine,
+					isEnumerated(FC),
+					isFirst = isFirsLineList(FC, nxtFC),
+					isLast = isLastLineList(prvFC, FC))
 
 # Calculate code in case of a title of a section
 def title (Line):
@@ -26,48 +31,49 @@ def listLastStep (prvLine, Line, nxtLine, enumerated, isFirst=False, isLast=Fals
 
 	if isFirst and isLast and enumerated:
 		return 181
-	if isFirst and isLast and !enumerated:
+	if isFirst and isLast and not enumerated:
 		return 141
-	if isFirst and !isLast and enumerated:
+	if isFirst and not isLast and enumerated:
 		return 150
-	if isFirst and !isLast and !enumerated:
+	if isFirst and not isLast and not enumerated:
 		return 110
-	if !isFirst and isLast and enumerated:
+	if not isFirst and isLast and enumerated:
 		return 130 + X
-	if !isFirst and isLast and !enumerated:
+	if not isFirst and isLast and not enumerated:
 		return 170 + X
-	if prvSmaller and nxtSmaller and !enumerated:
+	if prvSmaller and nxtSmaller and not enumerated:
 		return 140 + X
 	if prvSmaller and nxtSmaller and enumerated:
 		return 180 + X
-	if prvSmaller and !nxtSmaller and !enumerated:
+	if prvSmaller and not nxtSmaller and not enumerated:
 		return 110
-	if prvSmaller and !nxtSmaller and enumerated:
+	if prvSmaller and not nxtSmaller and enumerated:
 		return 150
-	if !prvSmaller and !nxtSmaller and !enumerated:
+	if not prvSmaller and not nxtSmaller and not enumerated:
 		return 120
-	if !prvSmaller and !nxtSmaller and enumerated:
+	if not prvSmaller and not nxtSmaller and enumerated:
 		return 160
-	if !prvSmaller and nxtSmaller and enumerated:
+	if not prvSmaller and nxtSmaller and enumerated:
 		return 130 + X
-	if !prvSmaller and nxtSmaller and !enumerated:
+	if not prvSmaller and nxtSmaller and not enumerated:
 		return 170 + X
 
 # Return first non tab character of a line
 def FirstCharacter (Line):
+	
 	return aux.RemoveFirstCharacters (Line, '	')[0]
 
 def isFirsLineList (prvFirstCharacter, FirstCharacter):
 	prvLineList = prvFirstCharacter == '*' or prvFirstCharacter == '-'
 	LineList = FirstCharacter == '*' or FirstCharacter == '-'
 	SameTypeList = FirstCharacter == prvFirstCharacter
-	return !prvLineList and LineList or !SameTypeList
+	return not prvLineList and LineList or not SameTypeList
 
 def isLastLineList (FirstCharacter, nxtFirstCharacter):
 	nxtLineList = nxtFirstCharacter == '*' or nxtFirstCharacter == '-'
 	LineList = FirstCharacter == '*' or FirstCharacter == '-'
 	SameTypeList = FirstCharacter == nxtFirstCharacter
-	return !nxtLineList and LineList or !SameTypeList
+	return not nxtLineList and LineList or not SameTypeList
 
 def isEnumerated (FirstCharacter):
 	return FirstCharacter == '*'
